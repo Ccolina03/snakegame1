@@ -1,4 +1,5 @@
 from turtle import Turtle
+import time
 
 STARTINGPOSITIONS=[(0, 0), (-20, 0), (-40, 0)]
 UP=90
@@ -8,7 +9,7 @@ RIGHT=0
 class Snake:
     def __init__(self,):
         self.wholesnake=[]
-        self.creationstart()#this is to state this is a method of the class
+        self.creationstart()#this is to state this is a method of the class (in order to fill the
         self.head=self.wholesnake[0]
     def creationstart(self):
         for position in STARTINGPOSITIONS:  # repeats three times because there is three things in the list and start with the first item , then continues with the second after finishing the loop
@@ -48,3 +49,11 @@ class Snake:
     def right(self):
         if self.head.heading()!= LEFT:
             self.head.setheading(RIGHT)
+
+    def reset(self):
+        #moves whole snake to somewhere else
+        for seg in self.wholesnake:  #this takes each square from wholesnake list and sends it somewhere else
+            seg.goto(1000,1000)
+        self.wholesnake.clear()  #without this after death the snake would not move.
+        self.creationstart()
+        self.head=self.wholesnake[0]
