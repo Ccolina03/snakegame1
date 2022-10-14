@@ -9,6 +9,7 @@ class Scoreboard(Turtle):  #ScoreBoard properties
             self.high_score=int(file.read())  #Here it indicates the first highest score as 0 first and saves it.
         self.penup()
         self.goto(0, 270)  # moves the written part to above
+        self.hideturtle()
         self.increase()
     def update_scoreboard(self): #score will update itself
         self.clear()
