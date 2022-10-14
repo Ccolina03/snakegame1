@@ -1,32 +1,28 @@
 from turtle import Turtle
 
-class Scoreboard(Turtle):
+class Scoreboard(Turtle):  #ScoreBoard properties
 
     def __init__(self):
         super().__init__()
-        self.superscore=-1
+        self.superscore=-1 #score will start 0 since it increases after increase() is called
         with open("textito.txt") as file:
-            self.high_score=int(file.read())  #AQUI INDICA AL high score como 0 primero y lo guarda como esa variable
+            self.high_score=int(file.read())  #Here it indicates the first highest score as 0 first and saves it.
         self.penup()
         self.goto(0, 270)  # moves the written part to above
         self.increase()
-    def update_scoreboard(self):
+    def update_scoreboard(self): #score will update itself
         self.clear()
         self.write(f"Score: {self.superscore} Highest score: {self.high_score}", align="center",
                    font=("Arial", 20, "normal"))  # COULD STATE ALIGNMENT AND FONT AS CONSTANTS ABOVE
     def highest(self):
         if self.superscore>self.high_score:
             self.high_score=self.superscore
-            with open("textito.txt", mode="w") as file:  #aqui al ocurrir esto. el self.high_score se reactualizara para cambiar lo que habia antes con la nueva variable. Y a partir de replicara el resultado hasta que acabe el juego.
+            with open("textito.txt", mode="w") as file:  #Here the highest possible score will update itself and will be saved in the text file.
                 file.write(f"{self.high_score}")
         self.superscore=0
         self.update_scoreboard()
 
-    # def gameover(self):
-    #     self.goto(0,0)
-    #     self.write("GAME OVER", align="center", font=("Arial", 30, "normal"))
-
-    def increase(self):
+    def increase(self): #score will increase every time the function is called and will update in screen
         self.color("white")
         self.superscore += 1
         self.update_scoreboard()
