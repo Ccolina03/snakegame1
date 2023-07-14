@@ -1,4 +1,4 @@
-# Download ZIP and run actualmain.py in Python
+# Download ZIP and run python3 actualmain.py in Python
 
 Move Snake with the up, down, left and right button and eat as many blue dots you can before your head touches your tail or the wall. Unlimited Attempts.
 
